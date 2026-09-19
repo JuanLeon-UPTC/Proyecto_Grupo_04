@@ -1,0 +1,13 @@
+# Temporales de Word / Office (aparecen mientras un .docx está abierto)
+~$*
+*.tmp
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Configuración local de editores y herramientas
+.vscode/
+.idea/
+.claude/
