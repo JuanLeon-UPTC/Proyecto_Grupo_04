@@ -13,4 +13,4 @@ Bitácora de quién aportó qué en cada sesión. Se actualiza en cada entrega, 
 
 | Integrante | Aporte | Evidencia (PR / commit) |
 |---|---|---|
-| Javier Becerra| analisis documental y bitacora |  |
+| |  |
