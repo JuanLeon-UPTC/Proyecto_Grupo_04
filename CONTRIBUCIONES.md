@@ -14,4 +14,6 @@ Bitácora de quién aportó qué en cada sesión. Se actualiza en cada entrega, 
 
 | Integrante | Aporte | Evidencia (PR / commit) |
 |---|---|---|
-| | | |
+| @emanuel-caro | Trawling y entrevista al propietario (02-elicitacion/trawling.docx y 02-elicitacion/entrevista-propietario.docx) | PR «S2 · Trawling y entrevista» |
+| @JuanLeon-UPTC | Cuestionario y diseño de la muestra, con registro del piloto (02-elicitacion/cuestionario.docx) | PR «S2 · Cuestionario y muestreo» |
+| @semillita23 | Análisis documental de la Ley 1581 de 2012 (02-elicitacion/analisis-documental.docx) y esta bitácora | PR «S2 · Análisis documental y bitácora» |
