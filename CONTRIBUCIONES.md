@@ -6,7 +6,9 @@ Bitácora de quién aportó qué en cada sesión. Se actualiza en cada entrega, 
 
 | Integrante | Aporte | Evidencia (PR / commit) |
 |---|---|---|
-| @JuanLeon-UPTC | Creación del repositorio y estructura inicial | Commit inicial en `main` |
+| @JuanLeon-UPTC | Creación del repositorio y estructura inicial; README con equipo, stakeholders y descripción | Commit inicial en `main`; PR «S1 · README y bitácora» |
+| @emanuel-caro | Matriz de poder-interés (`01-kickoff/matriz-poder-interes.docx`) | PR «S1 · Matriz de poder-interés» |
+| @semillita23 | Acta de constitución (`01-kickoff/acta-constitucion.docx`) | PR «S1 · Acta de constitución» |
 
 ## Sesión 2 · Elicitación clásica
 

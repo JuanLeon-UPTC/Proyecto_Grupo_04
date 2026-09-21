@@ -6,7 +6,7 @@ Trabajo de **Ingeniería de Requisitos** (UPTC · Facultad de Ingeniería · 202
 
 Levantamiento, especificación, priorización y validación de requisitos de software para una **panadería-cafetería de barrio**.
 
-**Contexto del negocio**
+**Contexto del negocio** (charla real con el propietario)
 
 - 8 años de operación, un solo local, capacidad para unas 20 personas.
 - Operación totalmente manual: registradora no electrónica, sin facturación electrónica ni reportes de ventas.
@@ -15,26 +15,37 @@ Levantamiento, especificación, priorización y validación de requisitos de sof
 - Catálogo: los productos se descontinúan "al tanteo", sin datos que respalden la decisión.
 - Sin domicilios, sin redes sociales y sin registro de clientes frecuentes.
 
-**Sistema a especificar:** por definir (se concreta en el acta de constitución, en `01-kickoff/`).
+**Sistema a especificar:** un sistema de apoyo a las decisiones de producción y de catálogo. Registra las ventas por producto, sugiere cuánto producir cada día y señala los productos de baja rotación para decidir cuáles descontinuar. El objetivo y el alcance están en el acta de constitución (`01-kickoff/acta-constitucion.docx`).
 
 ## Equipo
 
 | Integrante | Usuario de GitHub |
 |---|---|
-| _(nombre completo por completar)_ | [@JuanLeon-UPTC](https://github.com/JuanLeon-UPTC) |
-| _(pendiente)_ | _(pendiente)_ |
-| _(pendiente)_ | _(pendiente)_ |
+| Juan Leon | [@JuanLeon-UPTC](https://github.com/JuanLeon-UPTC) |
+| Emanuel Caro | [@emanuel-caro](https://github.com/emanuel-caro) |
+| Javier Santiago Jimenez | [@semillita23](https://github.com/semillita23) |
 
 ## Stakeholders
 
-_Pendiente: se completa con la identificación de stakeholders y la matriz de poder-interés (`01-kickoff/matriz-poder-interes.md`)._
+Identificados con mapeo organizacional y bola de nieve, y puntuados en la matriz de poder-interés (`01-kickoff/matriz-poder-interes.docx`).
+
+| Stakeholder | Categoría | Cuadrante |
+|---|---|---|
+| Dueño del negocio (real) | Patrocinador y alta dirección | Gestionar de cerca |
+| Panadero principal (ficticio) | Usuario / operador directo | Gestionar de cerca |
+| Cajera (ficticia) | Usuario / operador directo | Mantener informado |
+| Cliente (ficticio) | Usuario final afectado | Monitorear |
+| Soporte técnico externo (ficticio) | Área técnica | Monitorear |
+| DIAN (ente de control externo) | Ente regulador o de control | Mantener satisfecho |
+
+Las personas marcadas como *ficticias* se inventaron, con autorización del docente, para completar el análisis de las guías.
 
 ## Estructura del repositorio
 
 | Carpeta / archivo | Sesión | Contenido |
 |---|---|---|
 | `CONTRIBUCIONES.md` | Todas | Bitácora de quién aportó qué en cada sesión |
-| `01-kickoff/` | 1 | Matriz de poder-interés y acta de constitución (`acta-constitucion.md`) |
+| `01-kickoff/` | 1 | Matriz de poder-interés y acta de constitución |
 | `02-elicitacion/` | 2 | Guía de entrevista, cuestionario y observación o análisis documental |
 | `03-especificacion/` | 3 | Especificación de requisitos |
 | `04-priorizacion/` | 4 | Priorización (`backlog.md`) |
