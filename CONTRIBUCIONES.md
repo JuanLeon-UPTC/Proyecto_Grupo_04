@@ -7,9 +7,10 @@ Bitácora de quién aportó qué en cada sesión. Se actualiza en cada entrega, 
 | Integrante | Aporte | Evidencia (PR / commit) |
 |---|---|---|
 | @JuanLeon-UPTC | Creación del repositorio y estructura inicial | Commit inicial en `main` |
+| Javier Becerra | Acta de Constitucion ||
 
-## Sesión 2 · Elicitación clásica
+## Sesión 2 · Elicitación clásica 
 
 | Integrante | Aporte | Evidencia (PR / commit) |
 |---|---|---|
-| | | |
+| Javier Becerra| analisis documental y bitacora |  |
