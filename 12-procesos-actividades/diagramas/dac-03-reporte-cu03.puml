@@ -1,0 +1,26 @@
+@startuml
+title DAC-03 · Flujo detallado de CU-03 «Revisar el reporte semanal de rotación»
+|Propietario|
+start
+:Abre el reporte semanal de rotación;
+|Sistema|
+fork
+  :Calcula la rotación de las últimas 8 semanas\nde cada producto con datos suficientes;
+fork again
+  :Marca como de rotación baja los productos con menos del 25 %\ndel promedio de los demás durante 4 semanas seguidas;
+  if (¿Hay productos de rotación baja?) then ([no])
+    :Prepara la nota\n«Sin productos de rotación baja esta semana»;
+  else ([sí])
+  endif
+end fork
+:Muestra el reporte, resalta los de rotación baja\ny anota «menos de 4 semanas de datos» donde aplica;
+|Propietario|
+:Revisa el reporte;
+if (¿Descontinúa un producto marcado?) then ([sí])
+  :Indica el producto que descontinúa;
+  |Sistema|
+  :Registra la decisión junto con el reporte\nde 8 semanas que la respalda;
+else ([no])
+endif
+stop
+@enduml
