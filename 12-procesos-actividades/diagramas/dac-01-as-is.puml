@@ -1,0 +1,55 @@
+@startuml
+title DAC-01 · Producir y vender en la panadería hoy (AS-IS)
+|Propietario|
+start
+:Revisa de memoria lo vendido el mismo día\nde la semana anterior;
+note right #FFD9D2: PA-02
+:Calcula a ojo la cantidad del día\n(sube viernes, fines de semana y domingos);
+:Indica al panadero la cantidad aproximada;
+|Panadero principal|
+:Hornea la primera tanda (hacia las 6:00 a. m.);
+|Cliente|
+:Pide su producto en el mostrador\n(se repite por cada cliente);
+|Cajera|
+if (¿Hay el producto?) then ([no])
+  :Ofrece otro parecido y avisa\nal panadero de palabra;
+  note right #FFD9D2: PA-04
+  |Cliente|
+  if (¿Acepta otro producto?) then ([no])
+    :Se va sin comprar;
+    kill
+  else ([sí])
+  endif
+else ([sí])
+endif
+|Cajera|
+:Alista el pedido y digita el valor\nen la registradora;
+note right #FFD9D2: PA-01
+:Cobra y da el cambio;
+|Panadero principal|
+:Ajusta la segunda tanda según\ncómo va la mañana;
+:Decide la última tanda hacia la 1:30 p. m.\nsin saber cuánto se ha vendido;
+note right #FFD9D2: PA-03
+:Hornea la última tanda;
+:Mira las vitrinas al cerrar y estima\nel sobrante sin anotarlo;
+note right #FFD9D2: PA-07
+if (¿Se puede vender al otro día?) then ([sí])
+  :Vende el sobrante con descuento\nal día siguiente;
+else ([no])
+  :Regala el sobrante;
+endif
+|Cajera|
+:Saca el total de la registradora,\ncuenta el efectivo y compara;
+note right #FFD9D2: PA-05
+if (¿Cuadra?) then ([no])
+  :Revisa las notas de los pedidos\nhasta hallar la diferencia;
+else ([sí])
+endif
+|Propietario|
+if (¿Un producto sobra\nvarios días seguidos?) then ([sí])
+  :Quita el producto (al tanteo);
+  note right #FFD9D2: PA-06
+else ([no])
+endif
+stop
+@enduml
