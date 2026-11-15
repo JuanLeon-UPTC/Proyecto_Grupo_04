@@ -61,9 +61,9 @@ Sistema nuevo e independiente. El negocio no usa actualmente ningún software (o
 | Propietario | Básica a media | Semanal (reporte), ocasional (clasificar productos) |
 
 ### 2.4 Restricciones
-- Debe operar en el dispositivo de caja que ya tiene el negocio (no se asume hardware nuevo).
+- **Corregido en Unidad 6, Sesión 1:** la entrevista real al propietario y a la cajera (Unidad 3, Sesión 2) confirma que hoy usan una **caja registradora mecánica simple**, no un computador ni una tablet. No es posible operar este sistema sobre ese dispositivo. Se asume un dispositivo nuevo de bajo costo (tablet o computador básico) en el mostrador — ya no "sin hardware nuevo".
 - El negocio no tiene personal de TI propio: cualquier configuración debe ser simple.
-- Presupuesto limitado, propio de un negocio familiar pequeño.
+- Presupuesto limitado, propio de un negocio familiar pequeño: el dispositivo nuevo debe ser económico.
 
 ### 2.5 Suposiciones y dependencias
 | Suposición | Riesgo si falla |
@@ -153,6 +153,51 @@ Organización: por caso de uso. Cada requisito en formato EARS, con ficha mínim
 | Estabilidad | Estable |
 | Origen | CU-03, paso 3 · HU-03 |
 | Verificación | Análisis — revisar la fórmula contra un caso con datos conocidos |
+
+### CU-04 — Clasificar un producto fuera del catálogo
+*(agregado en Unidad 6, Sesión 2 — CU-04 no tenía RF propio, hallazgo de la matriz de trazabilidad de pantallas)*
+
+**RF-008**
+> CUANDO el propietario asigne nombre y categoría a un producto registrado como "Otro producto", el sistema deberá agregarlo al catálogo en estado Activo.
+
+| Campo | Valor |
+|---|---|
+| Prioridad | Should |
+| Estabilidad | Estable |
+| Origen | CU-04, pasos 3-4 |
+| Verificación | Prueba — clasificar un producto y confirmar que queda Activo |
+
+**RF-009**
+> SI el nombre asignado coincide con un producto ya existente en el catálogo, ENTONCES el sistema deberá preguntar si se fusionan las ventas previas bajo el producto existente, sin crear uno nuevo.
+
+| Campo | Valor |
+|---|---|
+| Prioridad | Should |
+| Estabilidad | Estable |
+| Origen | CU-04, extensión 3b · cubre también NI-06 (Unidad 4, Sesión 3) |
+| Verificación | Prueba — clasificar con un nombre duplicado y confirmar la fusión |
+
+### Requisitos nacidos de la validación (Unidad 6, Sesión 5)
+
+**RF-010** (Propuesto)
+> CUANDO la cajera cancele una venta con al menos un producto, el sistema deberá pedir confirmación antes de descartarla.
+
+| Campo | Valor |
+|---|---|
+| Prioridad | Should |
+| Estabilidad | Inestable (Propuesto) |
+| Origen | Evaluación heurística, hallazgo PR-01 |
+| Verificación | Prueba — cancelar una venta con productos y confirmar que pide confirmación |
+
+**RF-011** (Propuesto)
+> El mensaje de error tras una falla de guardado deberá indicar explícitamente la acción a seguir (anotar la venta en el cuaderno de contingencia), no solo que falló.
+
+| Campo | Valor |
+|---|---|
+| Prioridad | Should |
+| Estabilidad | Inestable (Propuesto) |
+| Origen | Prueba de usabilidad, hallazgo PR-04 |
+| Verificación | Inspección del texto del mensaje M-12 |
 
 ### Requisitos no funcionales
 
