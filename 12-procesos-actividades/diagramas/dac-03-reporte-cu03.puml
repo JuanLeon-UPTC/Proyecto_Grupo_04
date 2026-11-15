@@ -1,26 +1,33 @@
-@startuml
-title DAC-03 · Flujo detallado de CU-03 «Revisar el reporte semanal de rotación»
+@startuml dac-03-reporte-cu03
+title Diagrama de actividad - CU-03 Revisar el reporte semanal de rotación\nProyecto Grupo 04 - Sistema de registro de ventas
+
 |Propietario|
 start
-:Abre el reporte semanal de rotación;
+:Abrir el reporte semanal de rotación;
+
 |Sistema|
-fork
-  :Calcula la rotación de las últimas 8 semanas\nde cada producto con datos suficientes;
-fork again
-  :Marca como de rotación baja los productos con menos del 25 %\ndel promedio de los demás durante 4 semanas seguidas;
-  if (¿Hay productos de rotación baja?) then ([no])
-    :Prepara la nota\n«Sin productos de rotación baja esta semana»;
-  else ([sí])
+repeat
+  if (¿Producto con 4 semanas de datos?) then (sí)
+    :Calcular la rotación de las últimas 8 semanas;
+    if (¿Vendió menos del 25% del promedio\nde los demás productos, 4 semanas seguidas?) then (sí)
+      :Marcar el producto como de rotación baja;
+    else (no)
+    endif
+  else (no)
+    :Marcar "menos de 4 semanas de datos";
   endif
-end fork
-:Muestra el reporte, resalta los de rotación baja\ny anota «menos de 4 semanas de datos» donde aplica;
+repeat while (¿Quedan productos por evaluar?) is (sí) not (no)
+:Mostrar el reporte completo;
+
 |Propietario|
-:Revisa el reporte;
-if (¿Descontinúa un producto marcado?) then ([sí])
-  :Indica el producto que descontinúa;
+:Revisar el reporte;
+if (¿Decide descontinuar algún producto marcado?) then (sí)
   |Sistema|
-  :Registra la decisión junto con el reporte\nde 8 semanas que la respalda;
-else ([no])
+  :Registrar la decisión junto con\nel reporte de 8 semanas que la respalda;
+  stop
+else (no)
+  :No se registra ninguna decisión;
+  stop
 endif
-stop
+
 @enduml
