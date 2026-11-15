@@ -1,0 +1,43 @@
+@startuml secuencia_CU_03
+title DSE-03 · CU-03 Revisar el reporte semanal de rotación - Secuencia del sistema\nProyecto Grupo 04 - Sistema de registro de ventas
+
+actor Propietario
+participant "Sistema de registro\nde ventas" as Sistema
+
+Propietario -> Sistema : 1: abrirReporteSemanalDeRotacion()
+
+loop por cada producto
+  alt producto con 4 semanas de datos o más
+    note over Sistema
+      2: calcularRotacion(producto) (interno)
+      3: evaluar si vendió menos del 25% del promedio
+      de los demás, 4 semanas seguidas (interno)
+    end note
+  else producto con menos de 4 semanas de datos (2a)
+    note over Sistema
+      2a: marcar(producto, "menos de 4 semanas de datos") (interno)
+      el flujo retoma en el paso 3; no entra al cálculo de rotación baja
+    end note
+  end
+end
+
+Sistema --> Propietario : 4: mostrarReporteCompleto()
+
+alt ningún producto quedó marcado de rotación baja (3a)
+  Sistema --> Propietario : 3a: mostrar("Sin productos de rotación baja esta semana")
+end
+
+Propietario -> Sistema : 5: revisarReporte()
+
+alt decide descontinuar un producto marcado (5a)
+  Propietario -> Sistema : 5a: descontinuarProducto(producto)
+  Sistema --> Propietario : 5a: confirmarDecisionRegistrada(producto)
+  note right of Propietario
+    La decisión queda registrada junto con el
+    reporte de 8 semanas que la respalda.
+  end note
+else no decide descontinuar ningún producto
+  note right of Propietario: no se registra ninguna decisión
+end
+
+@enduml
