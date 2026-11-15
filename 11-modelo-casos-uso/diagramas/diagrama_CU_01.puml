@@ -1,0 +1,26 @@
+@startuml diagrama_CU_01
+title Diagrama de casos de uso - CU-01 Registrar una venta\nProyecto Grupo 04 - Sistema de registro de ventas
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cajera" as Cajera
+
+rectangle "Sistema de registro de ventas" {
+  usecase "Registrar una venta" as UC01
+  usecase "Registrar producto fuera del catálogo" as UC01_1a
+  usecase "Corregir una línea de venta" as UC01_1b
+  usecase "Impedir venta sin productos" as UC01_3a
+  usecase "Cancelar la venta" as UC01_5a
+  usecase "Reintentar guardar la venta" as UC01_6a
+}
+
+Cajera -- UC01
+
+UC01_1a ..> UC01 : <<extend>>
+UC01_1b ..> UC01 : <<extend>>
+UC01_3a ..> UC01 : <<extend>>
+UC01_5a ..> UC01 : <<extend>>
+UC01_6a ..> UC01 : <<extend>>
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml diagrama_CU_03
+title Diagrama de casos de uso - CU-03 Revisar el reporte semanal de rotación\nProyecto Grupo 04 - Sistema de registro de ventas
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Propietario" as Propietario
+
+rectangle "Sistema de registro de ventas" {
+  usecase "Revisar el reporte semanal de rotación" as UC03
+  usecase "Marcar producto sin datos suficientes" as UC03_2a
+  usecase "Confirmar ausencia de productos de rotación baja" as UC03_3a
+  usecase "Descontinuar un producto" as UC03_5a
+}
+
+Propietario -- UC03
+
+UC03_2a ..> UC03 : <<extend>>
+UC03_3a ..> UC03 : <<extend>>
+UC03_5a ..> UC03 : <<extend>>
+
+@enduml
