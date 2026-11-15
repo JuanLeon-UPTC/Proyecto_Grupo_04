@@ -1,0 +1,21 @@
+@startuml diagrama_contexto
+title Diagrama de contexto\nSistema de registro de ventas - Proyecto Grupo 04
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cajera" as Cajera
+actor "Panadero principal" as Panadero
+actor "Propietario" as Propietario
+
+rectangle "Sistema de registro de ventas" {
+  usecase "Registrar una venta" as UC01
+  usecase "Ajustar la cantidad sugerida de producción" as UC02
+  usecase "Revisar el reporte semanal de rotación" as UC03
+}
+
+Cajera -- UC01
+Panadero -- UC02
+Propietario -- UC03
+
+@enduml
