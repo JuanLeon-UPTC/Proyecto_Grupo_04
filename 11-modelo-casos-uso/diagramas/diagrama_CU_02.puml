@@ -1,0 +1,20 @@
+@startuml diagrama_CU_02
+title Diagrama de casos de uso - CU-02 Ajustar la cantidad sugerida de producción\nProyecto Grupo 04 - Sistema de registro de ventas
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Panadero principal" as Panadero
+
+rectangle "Sistema de registro de ventas" {
+  usecase "Ajustar la cantidad sugerida de producción" as UC02
+  usecase "Marcar producto sin datos suficientes" as UC02_2a
+  usecase "Bloquear ajuste fuera de horario" as UC02_5a
+}
+
+Panadero -- UC02
+
+UC02_2a ..> UC02 : <<extend>>
+UC02_5a ..> UC02 : <<extend>>
+
+@enduml
