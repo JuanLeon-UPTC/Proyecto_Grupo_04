@@ -1,0 +1,79 @@
+@startuml vista2_produccion_rotacion
+title Modelo de dominio - Vista 2: Producción y rotación\nProyecto Grupo 04 - Sistema de registro de ventas
+
+hide circle
+hide empty members
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+  FontColor Black
+}
+skinparam note {
+  BackgroundColor White
+  BorderColor Black
+}
+
+abstract class Empleado {
+  nombre : Texto
+}
+
+class "Panadero principal" as Panadero
+class Propietario
+
+class Producto {
+  nombre : Texto
+  categoría : Texto
+  precioActual : Dinero
+  estado : {PorClasificar, Activo, Descontinuado}
+}
+
+class CantidadDelDia {
+  fecha : Fecha
+  cantidadSugerida : Número
+  cantidadConfirmada : Número
+}
+
+class ReporteSemanal {
+  semanaInicio : Fecha
+  semanaFin : Fecha
+  fechaGeneración : Fecha
+}
+
+class EvaluacionDeProducto {
+  rotaciónÚltimas8Semanas : Número
+  /marcadoRotaciónBaja : Sí/No
+  nota : Texto
+}
+
+class DecisionDeDescontinuar {
+  fecha : Fecha
+}
+
+Empleado <|-- Panadero
+Empleado <|-- Propietario
+
+Panadero "1" -- "0..*" CantidadDelDia : confirma >
+Producto "1" -- "0..*" CantidadDelDia : tiene >
+
+ReporteSemanal "1" -- "0..*" EvaluacionDeProducto : contiene >
+Producto "1" -- "0..*" EvaluacionDeProducto : es evaluado en >
+
+Propietario "1" -- "0..*" DecisionDeDescontinuar : registra >
+Producto "1" -- "0..1" DecisionDeDescontinuar : tiene >
+EvaluacionDeProducto "0..1" -- "0..1" DecisionDeDescontinuar : respalda >
+
+note bottom of DecisionDeDescontinuar
+  RN-02: solo existe si Producto.estado = Descontinuado,
+  y siempre va acompañada de la EvaluacionDeProducto que
+  la respalda (CU-03, extensión 5a; garantía mínima).
+end note
+
+note right of Producto
+  Clase completa también en la Vista 1 (Ventas):
+  es compartida por los dos paquetes del negocio.
+end note
+
+@enduml
