@@ -1,0 +1,32 @@
+@startuml estados_producto
+title Diagrama de máquina de estados - Producto\nProyecto Grupo 04 - Sistema de registro de ventas
+
+[*] --> Activo : alta directa en el catálogo
+[*] --> PorClasificar : registrado como "Otro producto"\nen una venta (CU-01, extensión 1a)
+
+PorClasificar --> Activo : el propietario lo clasifica\n(agrega nombre y categoría al catálogo)
+
+Activo --> Descontinuado : decide descontinuarlo [marcado de\nrotación baja, con 8 semanas de respaldo]\n(CU-03, extensión 5a) / registra la decisión
+
+PorClasificar : entry / no se incluye en CU-02 ni CU-03
+PorClasificar : do / puede volver a venderse como "Otro producto"
+
+Activo : entry / disponible en CU-01, CU-02 y CU-03
+
+Descontinuado : entry / excluido de CU-01 y CU-02
+Descontinuado : do / su historial de 8 semanas sigue visible en CU-03 para auditoría
+
+note right of PorClasificar
+  Respaldada por CU-04 "Clasificar un producto
+  fuera del catálogo" (hallazgo de esta sesión,
+  sin meta de origen en el árbol de metas).
+end note
+
+note right of Descontinuado
+  Decisión de alcance: no hay transición de vuelta a
+  Activo. Ninguna historia de usuario pide reactivar
+  un producto descontinuado; si el negocio lo necesita,
+  se da de alta como producto nuevo.
+end note
+
+@enduml
