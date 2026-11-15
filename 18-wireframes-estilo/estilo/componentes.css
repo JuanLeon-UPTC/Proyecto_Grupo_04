@@ -1,0 +1,67 @@
+@import "tokens.css";
+
+* { box-sizing: border-box; }
+body {
+  font-family: var(--fuente);
+  font-size: var(--tamano-base);
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  margin: 0;
+  padding: var(--espacio-md);
+  max-width: 480px;
+}
+
+/* Componente 1: botón */
+.boton {
+  min-height: var(--alto-control);
+  padding: var(--espacio-sm) var(--espacio-md);
+  border-radius: var(--radio-borde);
+  border: none;
+  font-size: var(--tamano-base);
+  cursor: pointer;
+}
+.boton-primario { background: var(--color-primario); color: white; }
+.boton-secundario { background: white; color: var(--color-primario); border: 1px solid var(--color-primario); }
+.boton:focus-visible { outline: var(--anillo-foco); outline-offset: 2px; }
+
+/* Componente 2: campo de texto */
+.campo { margin-bottom: var(--espacio-md); }
+.campo label { display: block; margin-bottom: 4px; font-weight: 600; }
+.campo input, .campo select {
+  width: 100%;
+  min-height: var(--alto-control);
+  padding: var(--espacio-sm);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  font-size: var(--tamano-base);
+}
+.campo input:focus-visible { outline: var(--anillo-foco); }
+.campo .error-texto { color: var(--color-error); font-size: 14px; margin-top: 4px; }
+
+/* Componente 3: tarjeta (línea de venta / fila de producto) */
+.tarjeta {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  padding: var(--espacio-sm) var(--espacio-md);
+  margin-bottom: var(--espacio-sm);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Componente 4: tabla */
+table.reporte { width: 100%; border-collapse: collapse; margin-bottom: var(--espacio-md); }
+table.reporte th, table.reporte td { text-align: left; padding: var(--espacio-sm); border-bottom: 1px solid var(--color-borde); }
+.fila-marcada { border-left: 4px solid var(--color-advertencia); }
+
+/* Componente 5: aviso / mensaje */
+.aviso { padding: var(--espacio-sm) var(--espacio-md); border-radius: var(--radio-borde); margin-bottom: var(--espacio-md); font-weight: 600; }
+.aviso-error { background: #FDECEA; color: var(--color-error); border: 1px solid var(--color-error); }
+.aviso-exito { background: #E8F5E9; color: var(--color-exito); border: 1px solid var(--color-exito); }
+.aviso-advertencia { background: #FFF3E0; color: var(--color-advertencia); border: 1px solid var(--color-advertencia); }
+/* No depende solo del color: cada aviso lleva además un ícono de texto (ver wireframes) */
+
+/* Componente 6: lista (pendientes) */
+.lista-pendientes { list-style: none; padding: 0; }
+.lista-pendientes li { padding: var(--espacio-sm); border-bottom: 1px solid var(--color-borde); }
+
+.total { font-size: var(--tamano-titulo); font-weight: 700; }

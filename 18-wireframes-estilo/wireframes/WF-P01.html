@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF-P01 · Registrar venta</title>
+<link rel="stylesheet" href="../estilo/componentes.css">
+</head>
+<body>
+  <h1>Registrar venta</h1>
+
+  <div class="aviso aviso-exito" role="status">✓ Venta registrada</div>
+
+  <div class="campo">
+    <label for="producto">Producto</label>
+    <select id="producto">
+      <option>Pan de sal</option>
+      <option>Croissant</option>
+      <option>Otro producto…</option>
+    </select>
+  </div>
+  <div class="campo">
+    <label for="cantidad">Cantidad</label>
+    <input id="cantidad" type="number" min="1" value="1">
+  </div>
+  <button class="boton boton-primario">Agregar</button>
+
+  <h2>Venta en curso</h2>
+  <div class="tarjeta"><span>Pan de sal x2</span><span>$3.000</span></div>
+  <div class="tarjeta"><span>Croissant x1</span><span>$2.500</span></div>
+
+  <p class="total">Total: $5.500</p>
+
+  <button class="boton boton-secundario">Marcar venta completa</button>
+  <button class="boton boton-primario">Confirmar pago</button>
+</body>
+</html>

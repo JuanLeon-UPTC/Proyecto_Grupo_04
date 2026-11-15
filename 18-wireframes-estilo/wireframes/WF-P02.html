@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WF-P02 · Sugerencia del día</title>
+<link rel="stylesheet" href="../estilo/componentes.css">
+</head>
+<body>
+  <h1>Sugerencia del día</h1>
+
+  <table class="reporte">
+    <thead><tr><th>Producto</th><th>Sugerida</th><th>Cantidad del día</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Pan de sal</td>
+        <td>60</td>
+        <td><input type="number" value="80" aria-label="Cantidad del día para Pan de sal"></td>
+      </tr>
+      <tr>
+        <td>Croissant</td>
+        <td>30</td>
+        <td><input type="number" value="30" aria-label="Cantidad del día para Croissant"></td>
+      </tr>
+      <tr>
+        <td>Empanada especial</td>
+        <td colspan="2">Sin datos suficientes</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="aviso aviso-advertencia" role="alert" hidden>⚠ Ya pasó el horario de ajuste (1:30 p. m.). Queda la última cantidad vigente.</div>
+
+  <button class="boton boton-primario">Confirmar cantidad del día</button>
+</body>
+</html>
