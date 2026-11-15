@@ -1,0 +1,40 @@
+@startuml
+title DAC-02 · Producir y vender en la panadería en el futuro (TO-BE)
+|Sistema|
+start
+:Calcula la cantidad sugerida de cada producto\ncon las ventas de las últimas 4 semanas (CU-02);
+|Panadero principal|
+:Revisa la sugerencia y ajusta la cantidad del día;
+:Confirma la cantidad antes de la 1:30 p. m. (CU-02);
+|Sistema|
+:Guarda la cantidad del día junto con la sugerida;
+|Panadero principal|
+:Hornea las tandas de la mañana;
+|Cajera|
+:Registrar una venta (CU-01)|
+if (¿Se agotó un producto?) then ([sí])
+  :Marca el producto como agotado;
+  |Sistema|
+  :Registra el agotado con producto y hora (RP-02)>
+else ([no])
+endif
+|Panadero principal|
+:Consulta las ventas del día por producto (RP-01);
+:Hornea la última tanda;
+:Cuenta el sobrante al cierre;
+|Sistema|
+:Registra el sobrante por producto (RP-03);
+|Cajera|
+:Cierra la caja y compara el efectivo\ncon el total del día del sistema;
+|Sistema|
+:Llega la semana de reporte<
+:Calcula la rotación de las últimas 8 semanas\ny marca los de rotación baja (CU-03);
+|Propietario|
+:Revisa el reporte semanal de rotación;
+if (¿Descontinúa un producto marcado?) then ([sí])
+  |Sistema|
+  :Registra la decisión junto con el reporte que la respalda;
+else ([no])
+endif
+stop
+@enduml

@@ -1,0 +1,68 @@
+# Hallazgos y brechas · AS-IS → TO-BE → requisitos
+
+**Proyecto Grupo 04 · Panadería El Arte de Amar** · Borrador v0.1
+
+Evidencia: **E-P** = entrevista al propietario (16/09/2026) · **E-B** = al panadero principal (18/09/2026) · **E-C** = a la cajera (18/09/2026) · **CP** = cuestionario piloto (n = 5, no generalizable). No hay hoja de cálculo ni formatos del negocio, así que casi todas las cifras son **estimaciones dichas por los entrevistados**, pendientes de medir.
+
+## 1. Problemas del proceso actual (DAC-01)
+| ID | Familia · dónde | Problema | Frecuencia | Costo | Riesgo | Evidencia | Prioridad propuesta |
+|---|---|---|---|---|---|---|---|
+| PA-01 | Pérdida de información · «Digita el valor en la registradora» | La registradora solo da el total del día: no queda el producto ni la hora de cada venta | Todas las ventas | No hay histórico por producto; la producción se decide sin datos | Alto: bloquea M1, M2 y M3 | E-P, E-C; trawling | Crítica |
+| PA-02 | Control débil · «Calcula a ojo la cantidad» | La cantidad del día es el promedio «a ojo» del mismo día de la semana anterior, sin apuntarlo | Cada día | Sobra producto 2 o 3 veces por semana (estimación del propietario); tanda extra «casi todas las semanas» (estimación del panadero) | Medio-alto | E-P, E-B | Alta |
+| PA-03 | Pérdida de información · «Decide la última tanda» | El panadero no ve el mostrador: decide la última tanda hacia la 1:30 p. m. sin saber cuánto se ha vendido | Cada día | «Casi a ciegas»; a las 4 p. m. el pan de sal ya no está (caso C2) | Medio-alto | E-B, E-P | Alta |
+| PA-04 | Pérdida de información · «Ofrece otro parecido y avisa» | Lo que se agota y los clientes que se van sin comprar no quedan anotados; el aviso es de palabra o en un papel que se pierde | «Muchos» se van sin comprar por la tarde (cajera); en CP, 2 de 5 no encontraron el producto y ambos nombraron el pan de sal por la tarde | Ventas perdidas, por medir | Medio | E-C, E-P, CP | Media |
+| PA-05 | Reprocesos · «Cuenta el efectivo y compara» | El cierre se hace contando y sumando a mano; si no cuadra, se revisan las notas una por una | Cada día | Cerca de 30 min cuando cuadra a la primera (estimación de la cajera); en un caso faltaron $5.000 y tomó cerca de una hora más | Medio | E-C | Media |
+| PA-06 | Control débil · «Quita el producto» | Un producto se retira si «sobra varios días seguidos», sin cifras | Cada vez que se decide (no cuantificada) | Retirar un producto que sí se compra, o mantener uno que sobra | Medio | E-P | Media |
+| PA-07 | Pérdida de información · «Estima el sobrante sin anotarlo» | No se anota lo producido ni lo que sobra | Todos los días | No se puede medir el criterio de éxito de bajar el sobrante 20 % frente a la línea base | Medio | E-B, E-P; acta de constitución | Alta |
+
+La prioridad es una propuesta del análisis; la confirma el propietario.
+
+## 2. Decisiones de rediseño (propuestas)
+| ID | Problema | Respuesta | Decisión propuesta |
+|---|---|---|---|
+| D-01 | PA-01 | Automatizar | La venta se registra por producto, con fecha y hora, en el sistema (CU-01; M1) |
+| D-02 | PA-02 | Automatizar y eliminar | El sistema calcula la cantidad sugerida con las últimas 4 semanas (CU-02; M2.1); desaparece el cálculo a ojo del propietario |
+| D-02b | PA-02 | Conservar | El panadero revisa, ajusta y confirma; la decisión final sigue siendo suya |
+| D-03 | PA-03 | Cambiar de responsable la información | El panadero consulta las ventas del día por producto antes de la última tanda (RP-01) |
+| D-04 | PA-04 | Simplificar | La cajera marca el producto agotado con la hora, sin salirse del registro de la venta (RP-02; respetar M1.3, menos de 10 s) |
+| D-05 | PA-05 | Simplificar | El cierre compara el efectivo con el total del día que acumula el sistema (CU-01) |
+| D-06 | PA-06 | Automatizar y conservar | El sistema calcula la rotación y marca la baja (CU-03; M3); el propietario decide si descontinúa |
+| D-07 | PA-07 | Simplificar | El panadero sigue contando el sobrante (M2.3) y el sistema lo registra por producto (RP-03) |
+
+**Paralelizar: no aplicó.** Las acciones dependen unas de otras; la única bifurcación real está en el flujo de CU-03 (DAC-03).
+
+## 3. Tabla de brechas
+Una fila por cambio del TO-BE. Sin el SRS de la Unidad 4 a mano, la columna «Requisito» cita metas, historias y casos de uso; el ID de RF se completa con el SRS. Los requisitos nuevos llevan ID provisional **RP-nn**.
+
+| ID | Problema AS-IS | Cambio TO-BE (DAC-02) | Requisito · meta · historia | Caso de uso | Respuesta | Estado · dueño |
+|---|---|---|---|---|---|---|
+| B-01 | PA-01 | Registra cada venta por producto, cantidad, fecha y hora | M1.1 a M1.3 · HU-01 | CU-01 | Software | Propuesto · cajera y propietario |
+| B-02 | PA-02 | Calcula la sugerencia; el panadero revisa, ajusta y confirma antes de la 1:30 p. m. | M2.1, M2.2 · HU-02a, HU-02b | CU-02 | Software + procedimiento | Propuesto · panadero principal y propietario |
+| B-03 | PA-03 | El panadero consulta las ventas del día por producto antes de la última tanda | **RP-01 (nuevo)** · E-B hallazgo 2 | Por definir | Software | Propuesto · pendiente de alcance (propietario) |
+| B-04 | PA-04 | La cajera marca el producto agotado, con hora | **RP-02 (nuevo)** · E-P hallazgo 7, E-C hallazgo 3, CP | Por definir (¿extensión de CU-01?) | Software + procedimiento | Propuesto · pendiente de alcance; no debe rebasar M1.3 |
+| B-05 | PA-05 | El cierre compara el efectivo con el total del día del sistema | CU-01, garantía de éxito: la venta queda «sumada al total del día» | CU-01 | Software + procedimiento | Cubierta en parte: el caso no dice que el total se muestre al cierre; se propone agregar ese criterio |
+| B-06 | PA-06 | Calcula la rotación, marca la baja y registra la decisión del propietario | M3.1, M3.2 · HU-03 | CU-03 | Software | Propuesto · propietario |
+| B-07 | PA-07 | El panadero cuenta el sobrante y el sistema lo registra por producto | **RP-03 (nuevo)** · M2.3 es solo expectativa; criterio de éxito de −20 % de sobrante | Por definir | Procedimiento + software | Propuesto · pendiente de alcance (propietario) |
+
+**Hacia atrás.** RF-DP-01 a RF-DP-07 y RNF-DP-06 (Ley 1581) no aparecen en el diagrama porque son transversales a las cuentas de usuario. HU-02c (sugerencia en tandas) está aplazada. Repetir esta revisión con el SRS de la Unidad 4.
+
+## 4. Pendientes
+| ID | Pregunta o tarea | Responsable | Fecha |
+|---|---|---|---|
+| PE-01 | Enviar los resúmenes de las tres entrevistas para validación y registrar las respuestas | Emanuel Caro | Por acordar |
+| PE-02 | Realizar el taller, con acta (un desacuerdo real), foto del muro y confirmación escrita | Equipo | Por acordar |
+| PE-03 | Prueba del recorrido de DAC-01 con un caso real no usado | Integrante que no dibujó | Por acordar |
+| PE-04 | ¿Se conserva la registradora en paralelo o la reemplaza el sistema? | Propietario y cajera | Por acordar |
+| PE-05 | ¿El propietario sigue dando una cantidad aproximada o la sugerencia la reemplaza? | Propietario y panadero | Por acordar |
+| PE-06 | ¿RP-01, RP-02 y RP-03 entran al alcance? Definir su caso de uso | Propietario y equipo | Sesión 4 |
+| PE-07 | ¿Hay computador o celular utilizable en la zona de producción? (necesario para RP-01 y RP-03) | Propietario | Por acordar |
+| PE-08 | Cronometrar el cierre de caja y contar los agotados durante una semana | Equipo | Por acordar |
+| PE-09 | Incorporar el SRS de la Unidad 4 (IDs de RF/RNF) y completar la matriz de trazabilidad | Equipo | Por acordar |
+
+## 5. Trazabilidad
+| Elemento | Meta → historia | Caso de uso | Diagrama · acción | Brecha |
+|---|---|---|---|---|
+| Registrar la venta | M1 → HU-01 | CU-01 | DAC-02 · Registrar una venta | B-01, B-05 |
+| Sugerir y ajustar la cantidad | M2 → HU-02a, 02b | CU-02 | DAC-02 · Calcula la sugerencia; Confirma la cantidad | B-02 |
+| Rotación y reporte | M3 → HU-03 | CU-03 | DAC-02 · Calcula la rotación; DAC-03 | B-06 |
+| RP-01, RP-02, RP-03 | Sin meta ni historia (por crear) | Por definir | DAC-02 | B-03, B-04, B-07 |

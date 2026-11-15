@@ -1,0 +1,33 @@
+# Checklist de calidad de los diagramas de actividades
+
+**Pre-revisión** hecha al generar los diagramas (los tres renderizados en PlantUML). La aplicación formal debe hacerla **otro integrante**, distinto de quien dibujó.
+
+Respuestas: **sí**, **no** (con el número de hallazgo), **n. a.** o **?** si depende de algo que aún no ocurre (taller o validación con los entrevistados).
+
+| ID | Pregunta | DAC-01 | DAC-02 | DAC-03 |
+|---|---|---|---|---|
+| A1 | ¿Hay un solo nodo inicial? | sí | sí | sí |
+| A2 | ¿Todo camino llega a un final (de actividad o de flujo)? | sí | sí | sí |
+| A3 | ¿Cada decisión tiene todas sus salidas con guardas excluyentes y completas? | sí | sí | sí |
+| A4 | ¿Cada bifurcación tiene su unión? | n. a. | n. a. | sí |
+| A5 | ¿Se usa la fusión para alternativas y la unión para simultáneas? | sí | sí | sí |
+| A6 | ¿Cada acción empieza con un verbo y nombra su objeto? | sí | sí | sí |
+| B1 | ¿Cada calle tiene un dueño real (rol, área o sistema)? | sí | sí | sí |
+| B2 | ¿Cada acción está en una sola calle? | sí | sí | sí |
+| B3 | ¿Cada acción viene de una persona o documento que la confirmó? | ? | ? | ? |
+| B4 | ¿Reproduce un caso real que NO se usó para construirlo? | ? | n. a. | n. a. |
+| B5 | ¿Hay al menos una excepción dibujada? | sí | sí | sí |
+| B6 | ¿Una sola altura de abstracción (sin pantallas, tablas ni componentes)? | sí | sí | sí |
+| B7 | ¿Se ve la frontera persona/sistema (TO-BE)? | n. a. | sí | sí |
+| C1 | ¿Problemas numerados y medidos (frecuencia, costo, riesgo)? | parcial: cifras son estimaciones | n. a. | n. a. |
+| C2 | ¿Cada acción de la calle «Sistema» tiene requisito o razón? | n. a. | RP-01 a RP-03 sin caso de uso | sí |
+| C4 | ¿Cada acción del sistema pertenece a un caso de uso del catálogo? | n. a. | ? (RP-01 a RP-03) | sí (CU-03) |
+| C5 | ¿Cada pendiente tiene responsable y fecha? | parcial: fechas por acordar | parcial | parcial |
+| C6 | ¿Hay acta o confirmación escrita de los dueños de calle? | ? | ? | ? |
+| C7 | ¿Cabe en una hoja legible (unos 30 elementos)? | sí | sí | sí |
+
+## Hallazgos
+| Nº | Diagrama · elemento | Pregunta | Qué se encontró | Corrección acordada | Revisó · aprobó | Estado |
+|---|---|---|---|---|---|---|
+| HD-01 | DAC-03 · pasos 2 y 3 del caso | Convivencia texto-diagrama | El texto de CU-03 numera los pasos 2 y 3 en secuencia; el diagrama los muestra simultáneos | Aclarar en CU-03 que el orden entre ellos no importa (propuesto) | *(por asignar)* | Abierto |
+| HD-02 | DAC-02 · RP-01 a RP-03 | C2, C4 | Acciones del sistema sin caso de uso | Definir casos de uso o extensiones (PE-06) | *(por asignar)* | Abierto |
