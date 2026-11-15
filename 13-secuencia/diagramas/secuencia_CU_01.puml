@@ -1,0 +1,57 @@
+@startuml secuencia_CU_01
+title DSE-01 · CU-01 Registrar una venta - Secuencia del sistema\nProyecto Grupo 04 - Sistema de registro de ventas
+
+actor Cajera
+participant "Sistema de registro\nde ventas" as Sistema
+
+loop por cada producto que pide el cliente
+  Cajera -> Sistema : 1: indicarProducto(producto, cantidad)
+  alt producto fuera del catálogo (1a)
+    Sistema --> Cajera : 1a: registrarComo("Otro producto")
+  else producto en el catálogo
+    Sistema --> Cajera : 2: subtotalActualizado()
+  end
+  opt la cajera corrige o quita la línea (1b, antes de confirmar el pago)
+    Cajera -> Sistema : 1b: corregirOQuitarLinea(producto)
+    Sistema --> Cajera : 2: subtotalActualizado()
+  end
+end
+
+Cajera -> Sistema : 3: indicarVentaCompleta()
+
+alt la venta quedó sin productos (3a)
+  Sistema --> Cajera : 3a: pedirAlMenosUnProducto()
+  note right of Cajera
+    El flujo vuelve al ciclo de productos
+    (retoma el paso 1); no termina el caso de uso.
+  end note
+else la venta tiene al menos un producto
+  Sistema --> Cajera : 4: mostrarTotalACobrar(total)
+
+  alt el cliente no paga o pide cancelar (5a)
+    Cajera -> Sistema : 5a: cancelarVenta()
+    Sistema --> Cajera : 5a: ventaDescartada()
+    note right of Cajera: el caso de uso termina sin registrar la venta
+  else el cliente paga
+    Cajera -> Sistema : 5: confirmarPago()
+    note over Sistema: 6: guardarVenta() (interno)
+
+    alt el guardado es exitoso
+      Sistema --> Cajera : 7: confirmarVentaRegistrada()
+    else falla al guardar (6a)
+      note over Sistema: 6a: reintentarGuardarVenta() (interno)
+      alt el reintento es exitoso
+        Sistema --> Cajera : 7: confirmarVentaRegistrada()
+      else el reintento también falla
+        Sistema --> Cajera : 6a: avisarErrorDeGuardado()
+        note right of Cajera
+          La cajera anota la venta en el cuaderno
+          de contingencia (fuera del sistema).
+          El caso de uso termina sin registrar la venta.
+        end note
+      end
+    end
+  end
+end
+
+@enduml
