@@ -9,7 +9,7 @@
 | NI-03 | M3.1 | HU-03 | RF-006 | Análisis |
 | NI-04 | M1.3 | HU-01 | RF-002, RNF-001 | Prueba, Demostración |
 | NI-05 | — (sin meta en el árbol original) | — (sin HU) | RF-007 (Propuesto) | Prueba |
-| NI-06 | — (sin meta) | — (sin HU) | **Ninguno — hueco** | — |
+| NI-06 | — (sin meta) | — (sin HU) | RF-009 *(agregado en Unidad 6, Sesión 2)* | Prueba |
 
 ## Cobertura por NI
 
@@ -20,6 +20,6 @@
 | NI-03 | ✓ | Cubierta |
 | NI-04 | ✓ | Cubierta |
 | NI-05 | ◐ | Parcial — RF-007 existe pero sigue Propuesto, no Aprobado |
-| NI-06 | ✗ | Sin cobertura — ver registro de decisiones, D-02 |
+| NI-06 | ✓ | Cubierta — RF-009, agregado en Unidad 6, Sesión 2 |
 
 Ver `decisiones-trazabilidad.md` para el registro de decisiones sobre los huecos y huérfanos de esta tabla.
