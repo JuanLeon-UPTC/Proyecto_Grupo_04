@@ -1,0 +1,36 @@
+// Mismo contenido que reglas.json, cargado como script porque fetch() no
+// funciona sobre file://. reglas.json es la fuente legible; este archivo
+// es su copia ejecutable.
+const REGLAS = {
+  pantalla: "P-01",
+  reglas: [
+    {
+      id: "R-01",
+      campo: "producto",
+      tipo: "obligatorio",
+      mensaje: "Selecciona un producto antes de agregar.",
+      ejemplos: { validos: ["Pan de sal"], invalidos: [""] },
+    },
+    {
+      id: "R-02",
+      campo: "producto",
+      tipo: "no-descontinuado",
+      mensaje: "Este producto ya no está disponible.",
+      ejemplos: { validos: ["Pan de sal"], invalidos: ["Torta de chocolate"] },
+    },
+    {
+      id: "R-03",
+      campo: "cantidad",
+      tipo: "obligatorio",
+      mensaje: "La cantidad debe ser mayor a 0.",
+      ejemplos: { validos: ["2"], invalidos: [""] },
+    },
+    {
+      id: "R-04",
+      campo: "cantidad",
+      tipo: "entero-positivo",
+      mensaje: "La cantidad debe ser mayor a 0.",
+      ejemplos: { validos: ["2"], invalidos: ["0", "-1", "1.5"] },
+    },
+  ],
+};
