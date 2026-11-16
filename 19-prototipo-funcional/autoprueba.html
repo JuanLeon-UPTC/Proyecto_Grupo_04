@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Autoprueba · P-01</title>
+<link rel="stylesheet" href="css/componentes.css">
+<style>
+  .ok { color: var(--color-exito); }
+  .fail { color: var(--color-error); }
+  li { font-family: monospace; }
+</style>
+</head>
+<body>
+  <h1>Autoprueba — P-01 Registrar venta</h1>
+  <p id="resumen"></p>
+  <ul id="lista"></ul>
+
+  <script src="datos/datos.js"></script>
+  <script src="datos/reglas-datos.js"></script>
+  <script src="js/reglas.js"></script>
+  <script src="js/almacen.js"></script>
+  <script src="js/autoprueba.js"></script>
+  <script>
+    const resultados = ejecutarAutoprueba();
+    const aprobados = resultados.filter((r) => r.ok).length;
+    document.getElementById("resumen").textContent =
+      `${aprobados} de ${resultados.length} comprobaciones aprobadas`;
+    const lista = document.getElementById("lista");
+    resultados.forEach((r) => {
+      const li = document.createElement("li");
+      li.className = r.ok ? "ok" : "fail";
+      li.textContent = (r.ok ? "✓ " : "✗ ") + r.nombre;
+      lista.appendChild(li);
+    });
+  </script>
+</body>
+</html>
