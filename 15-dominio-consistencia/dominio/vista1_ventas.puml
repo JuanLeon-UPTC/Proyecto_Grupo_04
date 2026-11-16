@@ -1,0 +1,66 @@
+@startuml vista1_ventas
+title Modelo de dominio - Vista 1: Ventas\nProyecto Grupo 04 - Sistema de registro de ventas
+
+hide circle
+hide empty members
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+  FontColor Black
+}
+skinparam note {
+  BackgroundColor White
+  BorderColor Black
+}
+
+abstract class Empleado {
+  nombre : Texto
+}
+
+class Cajera
+
+class Producto {
+  nombre : Texto
+  categoría : Texto
+  precioActual : Dinero
+  estado : {PorClasificar, Activo, Descontinuado}
+}
+
+class Venta {
+  fecha : Fecha
+  hora : Hora
+  valorTotal : Dinero
+}
+
+class LineaVenta {
+  cantidad : Número
+  valorUnitarioAlMomento : Dinero
+}
+
+Empleado <|-- Cajera
+
+Cajera "1" -- "0..*" Venta : registra >
+Venta "1" -- "1..*" LineaVenta : contiene >
+Producto "1" -- "0..*" LineaVenta : aparece en >
+
+note bottom of Venta
+  RN-01: una venta siempre tiene al menos 1 línea
+  (CU-01, extensión 3a: no se puede completar vacía).
+end note
+
+note bottom of LineaVenta
+  El precio se congela al momento de la venta
+  (valorUnitarioAlMomento): una venta ya hecha no
+  cambia si el catálogo cambia después.
+end note
+
+note right of Producto
+  Clase completa también en la Vista 2
+  (Producción y rotación): es compartida
+  por los dos paquetes del negocio.
+end note
+
+@enduml
