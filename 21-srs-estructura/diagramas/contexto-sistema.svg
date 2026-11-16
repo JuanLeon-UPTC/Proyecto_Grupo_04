@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+<rect width="1000" height="500" fill="#ffffff"/>
+<rect x="350" y="145" width="300" height="210" rx="18" fill="#f4f1e8" stroke="#4b4638" stroke-width="2"/>
+<text x="500" y="195" text-anchor="middle" font-family="Arial" font-size="21" font-weight="bold">Sistema de registro</text>
+<text x="500" y="225" text-anchor="middle" font-family="Arial" font-size="21" font-weight="bold">de ventas</text>
+<text x="500" y="260" text-anchor="middle" font-family="Arial" font-size="16">Panadería-cafetería</text>
+<text x="500" y="283" text-anchor="middle" font-family="Arial" font-size="16">El Arte de Amar</text>
+<rect x="55" y="185" width="180" height="90" rx="12" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="145" y="237" text-anchor="middle" font-family="Arial" font-size="20">Cajera</text>
+<rect x="765" y="65" width="180" height="90" rx="12" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="855" y="105" text-anchor="middle" font-family="Arial" font-size="18">Panadero</text><text x="855" y="130" text-anchor="middle" font-family="Arial" font-size="18">principal</text>
+<rect x="765" y="330" width="180" height="90" rx="12" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="855" y="383" text-anchor="middle" font-family="Arial" font-size="20">Propietario</text>
+<path d="M235 230 L350 230" stroke="#333" stroke-width="2.5" fill="none"/><path d="M340 222 L350 230 L340 238" stroke="#333" stroke-width="2.5" fill="none"/>
+<text x="292" y="210" text-anchor="middle" font-family="Arial" font-size="13">Registra ventas</text>
+<path d="M650 190 L765 110" stroke="#333" stroke-width="2.5" fill="none"/><path d="M753 112 L765 110 L760 123" stroke="#333" stroke-width="2.5" fill="none"/>
+<text x="710" y="125" text-anchor="middle" font-family="Arial" font-size="13">Consulta sugerencia</text>
+<path d="M650 310 L765 370" stroke="#333" stroke-width="2.5" fill="none"/><path d="M752 357 L765 370 L750 373" stroke="#333" stroke-width="2.5" fill="none"/>
+<text x="706" y="355" text-anchor="middle" font-family="Arial" font-size="13">Consulta reporte</text>
+<text x="500" y="465" text-anchor="middle" font-family="Arial" font-size="14" fill="#555">RP-01, RP-02 y RP-03 están pendientes de aprobación y no se incluyen como funciones comprometidas.</text>
+</svg>
