@@ -1,0 +1,28 @@
+@startuml mapa_sitio
+title Mapa del sitio\nProyecto Grupo 04 - Sistema de registro de ventas
+
+rectangle "P-00\nInicio de sesión" as P00
+
+rectangle "Zona Cajera" {
+  rectangle "P-01\nRegistrar venta" as P01
+}
+rectangle "Zona Panadero" {
+  rectangle "P-02\nSugerencia del día" as P02
+}
+rectangle "Zona Propietario" {
+  rectangle "P-03\nReporte semanal" as P03
+  rectangle "P-04\nProductos por clasificar" as P04
+}
+
+P00 --> P01 : rol Cajera
+P00 --> P02 : rol Panadero
+P00 --> P03 : rol Propietario
+P03 --> P04 : menú
+
+note right of P00
+  No hay zona pública: el sistema
+  es enteramente interno, con
+  ingreso por rol.
+end note
+
+@enduml

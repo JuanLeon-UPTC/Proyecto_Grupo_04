@@ -1,0 +1,24 @@
+@startuml diagrama_navegacion_F01
+title F-01 · Flujo de navegación - Registrar una venta (CU-01)\nProyecto Grupo 04 - Sistema de registro de ventas
+
+state "P-01 (vacía)" as vacia
+state "P-01 (con productos)" as conProductos
+state "P-01 (lista para cobrar)" as lista
+
+[*] --> vacia : la cajera abre P-01
+
+vacia --> conProductos : agrega un producto [1a: fuera de catálogo, se registra igual]
+conProductos --> conProductos : agrega otro producto
+conProductos --> vacia : marca completa [venta vacía, 3a] / M-02
+conProductos --> lista : marca completa [con productos]
+
+lista --> vacia : confirma pago [éxito] / M-03
+lista --> vacia : cancela [5a]
+
+note right of conProductos
+  Intentar agregar un producto
+  Descontinuado dispara M-01
+  y no agrega la línea (RF-007).
+end note
+
+@enduml
