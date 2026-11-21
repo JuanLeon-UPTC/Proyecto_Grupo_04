@@ -1,0 +1,28 @@
+@startuml
+title Sistema de registro de ventas — Diagrama de contexto
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cajera" as Cajera
+actor "Panadero\nprincipal" as Panadero
+actor "Propietario" as Propietario
+
+rectangle "Sistema de registro de ventas\nPanadería-cafetería El Arte de Amar" as Sistema {
+}
+
+Cajera --> Sistema : Registra ventas\npor producto
+Sistema --> Cajera : Confirma registro\n(operación por detallar)
+
+Panadero --> Sistema : Consulta sugerencia\ny revisa cantidades
+Sistema --> Panadero : Sugerencia de producción\n(basada en historial)
+
+Propietario --> Sistema : Consulta reporte semanal
+Sistema --> Propietario : Información de rotación\npara decisión del catálogo
+
+note bottom of Sistema
+  RP-01, RP-02 y RP-03 siguen pendientes
+  de aprobación; no se representan como
+  interacciones comprometidas.
+end note
+
+@enduml
