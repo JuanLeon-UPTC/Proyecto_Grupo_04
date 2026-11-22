@@ -1,0 +1,50 @@
+@startuml secuencia_CU_02
+title DSE-02 · CU-02 Ajustar la cantidad sugerida de producción - Secuencia del sistema\nProyecto Grupo 04 - Sistema de registro de ventas
+
+actor "Panadero\nprincipal" as Panadero
+participant "Sistema de registro\nde ventas" as Sistema
+
+Panadero -> Sistema : 1: abrirSugerenciaDelDia()
+
+loop por cada producto
+  note over Sistema: 2: calcularSugerencia(producto) (interno)
+  alt producto con 4 semanas de datos o más
+    Sistema --> Panadero : 2: mostrarCantidadSugerida(producto, cantidad)
+  else producto con menos de 4 semanas de datos (2a)
+    Sistema --> Panadero : 2a: mostrar(producto, "Sin datos suficientes")
+    note right of Panadero: el flujo retoma en el paso 3; no se le propone cantidad
+  end
+end
+
+Panadero -> Sistema : 3: revisarSugerenciaDeCadaProducto()
+
+alt el panadero ajusta al menos un producto
+  loop por cada producto que ajusta
+    Panadero -> Sistema : 4: ajustarCantidad(producto, cantidadNueva)
+    alt cantidad inválida (negativa o no numérica) (4b)
+      Sistema --> Panadero : 4b: rechazarCantidad(producto)
+      note right of Panadero: el flujo retoma en el paso 4; debe corregir antes de seguir
+    else cantidad válida
+      Sistema --> Panadero : 4: cantidadActualizada(producto)
+    end
+  end
+else el panadero no ajusta ningún producto (4a)
+  note right of Sistema: el sistema deja la cantidad sugerida como cantidad del día para todos los productos
+end
+
+Panadero -> Sistema : 5: confirmarCantidadDelDia()
+
+alt antes de la 1:30 p. m.
+  note over Sistema: 6: guardarCantidadDelDia() (interno)
+  Sistema --> Panadero : 7: confirmarCantidadGuardada()
+else después de la 1:30 p. m., hora límite de la última tanda (5a)
+  Sistema --> Panadero : 5a: avisarFueraDeHorario()
+  note right of Panadero
+    No se permiten cambios para hoy; queda guardada
+    la última cantidad vigente (la sugerida, si no
+    se había ajustado nada). El caso de uso termina
+    sin guardar ajustes nuevos.
+  end note
+end
+
+@enduml
