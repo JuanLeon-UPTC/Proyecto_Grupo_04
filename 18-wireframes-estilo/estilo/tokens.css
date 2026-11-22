@@ -1,0 +1,27 @@
+:root {
+  /* Color */
+  --color-primario: #2E7D32;
+  --color-texto: #1A1A1A;
+  --color-fondo: #FFFFFF;
+  --color-error: #C62828;
+  --color-exito: #2E7D32;
+  --color-advertencia: #B45309;
+  --color-borde: #CCCCCC;
+
+  /* Tipografía */
+  --fuente: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --tamano-base: 16px;
+  --tamano-titulo: 20px;
+
+  /* Espaciado */
+  --espacio-sm: 8px;
+  --espacio-md: 16px;
+  --espacio-lg: 24px;
+
+  /* Forma */
+  --radio-borde: 6px;
+  --alto-control: 44px; /* mínimo táctil accesible */
+
+  /* Foco */
+  --anillo-foco: 3px solid #0B5FFF;
+}
