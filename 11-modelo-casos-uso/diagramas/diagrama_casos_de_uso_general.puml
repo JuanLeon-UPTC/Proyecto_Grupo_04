@@ -1,0 +1,46 @@
+@startuml diagrama_casos_de_uso_general
+title Diagrama de casos de uso general\nProyecto Grupo 04 - Sistema de registro de ventas
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cajera" as Cajera
+actor "Panadero principal" as Panadero
+actor "Propietario" as Propietario
+
+rectangle "Sistema de registro de ventas" {
+  usecase "Registrar una venta" as UC01
+  usecase "Registrar producto fuera del catálogo" as UC01_1a
+  usecase "Corregir una línea de venta" as UC01_1b
+  usecase "Impedir venta sin productos" as UC01_3a
+  usecase "Cancelar la venta" as UC01_5a
+  usecase "Reintentar guardar la venta" as UC01_6a
+
+  usecase "Ajustar la cantidad sugerida de producción" as UC02
+  usecase "Bloquear ajuste fuera de horario" as UC02_5a
+
+  usecase "Marcar producto sin datos suficientes" as UC_SinDatos
+
+  usecase "Revisar el reporte semanal de rotación" as UC03
+  usecase "Confirmar ausencia de productos de rotación baja" as UC03_3a
+  usecase "Descontinuar un producto" as UC03_5a
+}
+
+Cajera -- UC01
+Panadero -- UC02
+Propietario -- UC03
+
+UC01_1a ..> UC01 : <<extend>>
+UC01_1b ..> UC01 : <<extend>>
+UC01_3a ..> UC01 : <<extend>>
+UC01_5a ..> UC01 : <<extend>>
+UC01_6a ..> UC01 : <<extend>>
+
+UC02_5a ..> UC02 : <<extend>>
+UC_SinDatos ..> UC02 : <<extend>>
+
+UC03_3a ..> UC03 : <<extend>>
+UC03_5a ..> UC03 : <<extend>>
+UC_SinDatos ..> UC03 : <<extend>>
+
+@enduml
